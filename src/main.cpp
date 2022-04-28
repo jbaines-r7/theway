@@ -14,6 +14,30 @@
 
 namespace
 {
+    void print_art()
+    {
+        std::cout << "        .       .        ." << std::endl;
+        std::cout << "         .      .       .        .'               .--." << std::endl;
+        std::cout << " '.       .     .      .       .'       ________.'_.'_____.--.___" << std::endl;
+        std::cout << "   '.      .    .     .      .'        ()_() ooo   ~/   -.|      \"-._" << std::endl;
+        std::cout << "     '.     .   .    .     .'          ((((<____   |      |  ____  = )" << std::endl;
+        std::cout << "       '.    .  .   .    .'       .-'  (__)/ () \\___\\_____|_/ () \\__/)" << std::endl;
+        std::cout << ".        '   ______    .'      .-'    ___'.'.__.'_________'.'.__.'____" << std::endl;
+        std::cout << " '-.      .-~      ~-.      .-'      /" << std::endl;
+        std::cout << "    '-. .'            '. .-'      __/" << std::endl;
+        std::cout << "_      .                .      _./" << std::endl;
+        std::cout << " '-._ .                  . _.-'  |    And when the car broke down" << std::endl;
+        std::cout << "      :                  :      /     They started walking" << std::endl;
+        std::cout << "  .-' .                  . '- .'      But where were they going" << std::endl;
+        std::cout << "-'     .                . . .'        without even knowing \033[0;31mthe way\033[0m" << std::endl;
+        std::cout << "    .'  '.            .' _.'" << std::endl;
+        std::cout << "  .'  .'  '__________'.-'             ASDM Malicious Package Tool" << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~/                CVE-2022-8888" << std::endl;
+        std::cout << "~~  ~~~    ~~~ ~~ ~ /                 Art by JRO" << std::endl;
+        std::cout << "  ~~   ~~~~  ~~~~ ~/                  Hax by \033[0;31mjbaines 🦞\033[0m" << std::endl;
+        std::cout << std::endl;
+    }
+
     std::string load_file(const std::string& p_file)
     {
         std::ifstream inputFile(p_file, std::ifstream::in | std::ifstream::binary);
@@ -273,10 +297,12 @@ namespace
 int main(int p_argc, char** p_argv)
 {
     popl::OptionParser op("Allowed options");
-    auto help_option = op.add<popl::Switch>("h", "help", "produce help message");
-    auto asdm_file = op.add<popl::Value<std::string>, popl::Attribute::required>("f", "file", "The file to parse");
+    auto help_option = op.add<popl::Switch>("h", "help", "Produces this help message");
+    auto asdm_file = op.add<popl::Value<std::string>, popl::Attribute::required>("f", "file", "The name of the ASDM package to parse or create");
     auto extract = op.add<popl::Switch>("e", "extract", "Extract the input");
     auto repackage = op.add<popl::Switch>("r", "repackage", "Repackage the input");
+    auto generate = op.add<popl::Switch>("g", "generate", "Generates a malicious ASM package");
+    auto noart = op.add<popl::Switch>("n", "noart", "Don't display the ascii art");
 
     try
     {
@@ -287,6 +313,11 @@ int main(int p_argc, char** p_argv)
         std::cout << e.what() << std::endl;
         std::cout << op << std::endl;
         return EXIT_FAILURE;
+    }
+
+    if (!noart->is_set())
+    {
+        print_art();
     }
 
     if (help_option->is_set())
@@ -303,9 +334,13 @@ int main(int p_argc, char** p_argv)
     {
         do_repackage(asdm_file->value());
     }
+    else if (generate->is_set())
+    {
+        // hi
+    }
     else
     {
-        std::cout << "[?] But where were they going without even knowing the way." << std::endl;
+        std::cerr << "[!] Please select -e, -r, or -g." << std::endl;
     }
 
     return EXIT_FAILURE;
