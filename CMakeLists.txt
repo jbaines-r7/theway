@@ -7,7 +7,10 @@ set(CMAKE_CXX_FLAGS "-g -O2 -std=c++20 -Wall -Wextra -Wshadow -Wno-unused-result
 
 # compilation units
 add_executable(${PROJECT_NAME}
-                src/main.cpp)
+                src/main.cpp
+                src/extract.cpp
+                src/repackage.cpp
+                src/util.cpp)
 
 # linking comp / libs
 target_link_libraries(${PROJECT_NAME})
