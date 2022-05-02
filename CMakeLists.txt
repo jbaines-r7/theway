@@ -10,6 +10,7 @@ add_executable(${PROJECT_NAME}
                 src/main.cpp
                 src/extract.cpp
                 src/repackage.cpp
+                src/generate.cpp
                 src/util.cpp)
 
 # linking comp / libs

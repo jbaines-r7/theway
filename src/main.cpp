@@ -1,6 +1,7 @@
 #include "popl.hpp"
 #include "extract.hpp"
 #include "repackage.hpp"
+#include "generate.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -57,7 +58,9 @@ int main(int p_argc, char** p_argv)
 {
     popl::OptionParser op("Allowed options");
     auto help_option = op.add<popl::Switch>("h", "help", "Produces this help message");
-    auto asdm_file = op.add<popl::Value<std::string>, popl::Attribute::required>("i", "input", "The file to parse or directory to extract");
+    auto asdm_file = op.add<popl::Value<std::string> >("i", "input", "The file to parse or directory to extract");
+    auto lhost = op.add<popl::Value<std::string> >("", "lhost", "The host to connect back");
+    auto lport = op.add<popl::Value<int> >("", "lport", "The port to connect back to");
     auto extract = op.add<popl::Switch>("e", "extract", "Extract the input");
     auto repackage = op.add<popl::Switch>("r", "repackage", "Repackage the input");
     auto generate = op.add<popl::Switch>("g", "generate", "Generates a malicious ASM package");
@@ -87,16 +90,25 @@ int main(int p_argc, char** p_argv)
 
     if (extract->is_set())
     {
+        //verify asdm file is set
         theway::do_extract(asdm_file->value());
     }
     else if (repackage->is_set())
     {
+        // verify asdm file is set
         //todo asdm_file should end with '/'
         theway::do_repackage(asdm_file->value());
     }
     else if (generate->is_set())
     {
-        // hi
+        if (lhost->is_set() && lport->is_set())
+        {
+            theway::do_generate(lhost->value(), lport->value());
+        }
+        else
+        {
+            std::cerr << "[!] Provide lhost and lport for -g" << std::endl;
+        }
     }
     else
     {
