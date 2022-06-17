@@ -2,7 +2,7 @@
 
 The Way is a tool for unpacking, repacking, and creating malicious Cisco [Adaptive Security Device Manager](https://www.cisco.com/c/en/us/products/security/adaptive-security-device-manager/index.html) (ASDM) packages. ASDM is the Java-based administrative GUI for Adaptive Security Appliance (ASA) systems (e.g. firewalls and VPNs). The ASDM package is hosted on the ASA and sub-components are downloaded each time an administrator connects to the ASA via ASDM. An attacker that can plant a malicious ASDM package on the ASA can achieve code execution on administrator systems.
 
-The vulnerability is the result of a few issues. Most specifically, malicious ASDM packages are possible due to the lack of package signing by Cisco. An attacker that can craft a proper package and computer a file hash can load arbitrary packages on the ASA. This has been assigned CVE-2022-TOBEDETERMINED.
+The vulnerability is the result of a few issues. Most specifically, malicious ASDM packages are possible due to the lack of package signing by Cisco. An attacker that can craft a proper package and computer a file hash can load arbitrary packages on the ASA. This has been assigned CVE-2022-20829.
 
 ## File Extraction Example
 
