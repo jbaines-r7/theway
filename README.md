@@ -7,7 +7,22 @@ The vulnerability is the result of a few issues. Most specifically, malicious AS
 ## File Extraction Example
 
 ```
-albinolobster@ubuntu:~/gh_theway/build$ ./theway -nef ~/Desktop/cisco/asdm-7171-152.bin 
+albinolobster@ubuntu:~/gh_theway/build$ ./theway -ef ~/Desktop/cisco/asdm-7171-152.bin 
+
+                         where were they going without ever knowing
+           .              __.....__ 
+         .'|          .-''         '.                   _     _     .-.          .- 
+     .| <  |         /     .-''"'-.  `.           /\    \\   //      \ \        / /
+   .' |_ | |        /     /________\   \          `\\  //\\ //  __    \ \      / /
+ .'     || | .'''-. |                  |            \`//  \'/.:--.'.   \ \    / /
+'--.  .-'| |/.'''. \\    .-------------'             \|   |// |   \ |   \ \  / /
+   |  |  |  /    | | \    '-.____...---.              '     `" __ | |    \ `  /
+   |  |  | |     | |  `.             .'                      .'.''| |     \  /
+   |  '.'| |     | |    `''-...... -'     jbaines-r7        / /   | |_    / /
+   |   / | '.    | '.                   CVE-2022-20829      \ \._,\ '/|`-' /
+   `'-'  '---'   '---'                        🦞             `--'  `"  '..'
+
+
 [+] Loading /home/albinolobster/Desktop/cisco/asdm-7171-152.bin
 -> Magic: ASDM IMG7.17(1)152
 -> Description: Device Manager Version 7.17(1)152
@@ -152,32 +167,7 @@ total 51164
 -rw-rw-r-- 1 albinolobster albinolobster      112 Apr 28 11:06 version.prop
 ```
 
-## ASCII Banner Silliness
-
-```
-        .       .        .
-         .      .       .        .'               .--.
- '.       .     .      .       .'       ________.'_.'_____.--.___
-   '.      .    .     .      .'        ()_() ooo   ~/   -.|      "-._
-     '.     .   .    .     .'          ((((<____   |      |  ____  = )
-       '.    .  .   .    .'       .-'  (__)/ () \___\_____|_/ () \__/)
-.        '   ______    .'      .-'    ___'.'.__.'_________'.'.__.'____
- '-.      .-~      ~-.      .-'      /
-    '-. .'            '. .-'      __/
-_      .                .      _./
- '-._ .                  . _.-'  |    And when the car broke down
-      :                  :      /     They started walking
-  .-' .                  . '- .'      But where were they going
--'     .                . . .'        without even knowing the way
-    .'  '.            .' _.'
-  .'  .'  '__________'.-'             ASDM Malicious Package Tool
-~~~~~~~~~~~~~~~~~~~~~/                CVE-2022-8888
-~~  ~~~    ~~~ ~~ ~ /                 Art by JRO
-  ~~   ~~~~  ~~~~ ~/                  Hax by jbaines 🦞
-```
-
 ## Credit
 
-* Jacob Baines of Rapid7: Discovery and Exploit
-* [Malcom Lashely](https://gist.github.com/mlashley/7d2c16e91fe37c9ab3b2352615540025): Inspiration and original PGZ Exploit
+* [Malcom Lashely](https://gist.github.com/mlashley/7d2c16e91fe37c9ab3b2352615540025): CVE-2021-1585
 * [Fastball](https://www.youtube.com/watch?v=X5jlTlUTWfQ)
