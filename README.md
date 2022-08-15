@@ -4,6 +4,8 @@ The Way is a tool for unpacking, repacking, and creating malicious Cisco [Adapti
 
 The vulnerability is the result of a few issues. Most specifically, malicious ASDM packages are possible due to the lack of package signing by Cisco. An attacker that can craft a proper package and computer a file hash can load arbitrary packages on the ASA. This has been assigned CVE-2022-20829.
 
+A demonstration of exploitation can be found on YouTube here: https://www.youtube.com/watch?v=ydjD7lIR9Bg
+
 ## File Extraction Example
 
 ```
