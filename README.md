@@ -169,5 +169,5 @@ total 51164
 
 ## Credit
 
-* [Malcom Lashely](https://gist.github.com/mlashley/7d2c16e91fe37c9ab3b2352615540025): CVE-2021-1585
+* [Malcolm Lashley](https://gist.github.com/mlashley/7d2c16e91fe37c9ab3b2352615540025): CVE-2021-1585
 * [Fastball](https://www.youtube.com/watch?v=X5jlTlUTWfQ)
